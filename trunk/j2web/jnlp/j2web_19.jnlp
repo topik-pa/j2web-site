@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<jnlp spec="1.0+" codebase="http://www.auto-nuove-usate.it" href="/j2web/jnlp/j2web_19.jnlp">	<!--!!!-->
+
+    <information>
+        <title>J2Web Automotive - 1.0 Beta - Versione di prova per Auto&amp;Auto</title>	<!--!!!-->
+        <vendor>www.auto-nuove-usate.it</vendor>
+        <homepage href="http://www.auto-nuove-usate.it"/>
+        <description>Sincronizzazione e Multi Level Sharing per l'automotive</description>
+        <description kind="short">
+           Software per sincronizzare sui portali web e gestione MLS (Multi Level Sharing) di annunci automotive
+        </description>
+        <!--<icon href="/images/j2web/j2webFrameIcon.png"/>-->
+        <offline-allowed/>
+		<menu/>
+		<shortcut online="true">
+			<desktop/>
+		</shortcut>
+    </information>
+
+    <security>
+        <all-permissions/>
+    </security>
+
+    <resources>
+		<j2se version="1.7+" href="http://java.sun.com/products/autodl/j2se"/>
+                <jar href="/j2web/jars/j2web-automotive-autoeauto-1-0.jar" main="true"/><!--!!!-->
+		<jar href="/j2web/jars/commons-codec-1.4.jar"/>
+		<jar href="/j2web/jars/commons-logging-1.1.1.jar"/>
+		<jar href="/j2web/jars/forms-1.3.0.jar"/>
+		<jar href="/j2web/jars/httpclient-4.1.3.jar"/>
+		<jar href="/j2web/jars/httpclient-cache-4.1.3.jar"/>
+		<jar href="/j2web/jars/httpcore-4.1.4.jar"/>
+		<jar href="/j2web/jars/httpmime-4.1.3.jar"/>
+		<jar href="/j2web/jars/json-rpc-1.0.jar"/>
+		<jar href="/j2web/jars/jsoup-1.6.2.jar"/>
+		<jar href="/j2web/jars/mail.jar"/>
+		<jar href="/j2web/jars/miglayout15-swing.jar"/>
+    </resources>
+
+    <application-desc main-class="J2Web_UI" name="J2Web Automotive" />
+
+</jnlp>
