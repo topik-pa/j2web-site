@@ -9,6 +9,24 @@ $gallery= "imgauto/";
 $id=$_GET["id"];
 $result = mysql_query("SELECT * FROM vistaauto where Id='$id'");
 $row = mysql_fetch_array($result, MYSQL_ASSOC);
+/**/
+$idCarburante = $row["idCarburante"];
+$queryCarburante = mysql_query("SELECT * FROM carburante where id='$idCarburante'");
+$rowCarburante = mysql_fetch_array($queryCarburante, MYSQL_ASSOC);
+
+$idTipologia = $row["idTipologia"];
+$queryTipologia = mysql_query("SELECT * FROM tipoauto where id='$idTipologia'");
+$rowTipologia = mysql_fetch_array($queryTipologia, MYSQL_ASSOC);
+
+$idCarrozzeria = $row["idCarrozzeria"];
+$queryCarrozzeria = mysql_query("SELECT * FROM carrozzeriaauto where id='$idCarrozzeria'");
+$rowCarrozzeria = mysql_fetch_array($queryCarrozzeria, MYSQL_ASSOC);
+
+$idColoreEsterno = $row["idColoreEsterno"];
+$queryColoreEsterno = mysql_query("SELECT * FROM colore where id='$idColoreEsterno'");
+$rowColoreEsterno = mysql_fetch_array($queryColoreEsterno, MYSQL_ASSOC);
+
+/**/
 
 $a=$row["Marca"];
 $a=str_replace("-"," ",$a);
@@ -215,43 +233,43 @@ function validation2(){
 						<div class="gallery_thumbs">
 							<div id="gallery_thumbs">
 								<?php
-								if ($row["Immagine1"] != ""){
+								if ($row["Immagine1"] != "NULL"){
 								echo	"<a href='#'><img src='".$gallery.$row["Immagine1"]."'></a>";
 								}
 								
-								if ($row["Immagine2"] != ""){
+								if ($row["Immagine2"] != "NULL"){
 								echo	"<a href='#'><img src='".$gallery.$row["Immagine2"]."'></a>";
 								}
 								
-								if ($row["Immagine3"] != ""){
+								if ($row["Immagine3"] != "NULL"){
 								echo	"<a href='#'><img src='".$gallery.$row["Immagine3"]."'></a>";
 								}
 								
-								if ($row["Immagine4"] != ""){
+								if ($row["Immagine4"] != "NULL"){
 								echo	"<a href='#'><img src='".$gallery.$row["Immagine4"]."'></a>";
 								}
 								
-								if ($row["Immagine5"] != ""){
+								if ($row["Immagine5"] != "NULL"){
 								echo	"<a href='#'><img src='".$gallery.$row["Immagine5"]."'></a>";
 								}
 								
-								if ($row["Immagine6"] != ""){
+								if ($row["Immagine6"] != "NULL"){
 								echo	"<a href='#'><img src='".$gallery.$row["Immagine6"]."'></a>";
 								}
 								
-								if ($row["Immagine7"] != ""){
+								if ($row["Immagine7"] != "NULL"){
 								echo	"<a href='#'><img src='".$gallery.$row["Immagine7"]."'></a>";
 								}
 								
-								if ($row["Immagine8"] != ""){
+								if ($row["Immagine8"] != "NULL"){
 								echo	"<a href='#'><img src='".$gallery.$row["Immagine8"]."'></a>";
 								}
 								
-								if ($row["Immagine9"] != ""){
+								if ($row["Immagine9"] != "NULL"){
 								echo	"<a href='#'><img src='".$gallery.$row["Immagine9"]."'></a>";
 								}
 								
-								if ($row["Immagine10"] != ""){
+								if ($row["Immagine10"] != "NULL"){
 								echo	"<a href='#'><img src='".$gallery.$row["Immagine10"]."'></a>";
 								}
 								?>
@@ -312,16 +330,26 @@ function validation2(){
 						
 						<div class="offer_data">
 							<ul>
-								<li><?php echo $row["MeseImmatricolazione"]."/".$row["AnnoImmatricolazione"]; ?></li>
+							
+								<?php
+								if ($row["Chilometraggio"] != 0){
+									echo "<li>" . $row["MeseImmatricolazione"] . "/" .$row["AnnoImmatricolazione"] . "</li>";
+								}
+								else {
+									echo "<li>" . "Da immatricolare" . "</li>";
+								}
+								?>
+							
+								
 								<?php
 								if ($row["Chilometraggio"] != 0){
 									echo "<li>".$row["Chilometraggio"]." KM</li>";
 								}
 								?>
-								<li><?php echo $row["carburante"]; ?></li>
+								<li><?php echo $rowCarburante["descrizione"]; ?></li>
 								<?php
 								if ($row["Cilindrata"] != 0){
-									echo "<li>".$row["Cilindrata"]." CV</li>";
+									echo "<li>".$row["Cilindrata"]." CC</li>";
 								}
 								?>
 							</ul>
@@ -342,12 +370,12 @@ function validation2(){
 									echo "<li><span class='spec_name'>Potenza KW:</span> <strong class='spec_value'>Non Specificato</strong></li>";
 								}
 								?>
-								<li><span class="spec_name">Tipologia:</span> <strong class="spec_value"><?php echo $row["tipoauto"]; ?></strong> </li>
-								<li><span class="spec_name">Categoria:</span> <strong class="spec_value"><?php echo $row["carrozzeria"]; ?></strong> (<?php echo $row["PostiASedere"]; ?> porte)</li>
+								<li><span class="spec_name">Tipologia:</span> <strong class="spec_value"><?php echo $rowTipologia["descrizione"]; ?></strong> </li>
+								<li><span class="spec_name">Categoria:</span> <strong class="spec_value"><?php echo $rowCarrozzeria["descrizione"]; ?></strong> (<?php echo $row["PostiASedere"]; ?> porte)</li>
 								<?php
 								if ($row["Cambio"] != ""){
 									echo "<li><span class='spec_name'>Cambio:</span> <strong class='spec_value'>".$row["Cambio"]."</strong>";
-									if ($row["NumRapporti"] != ""){
+									if ($row["NumRapporti"] != "0"){
 										echo " (".$row["NumRapporti"]." marce)</li>";
 									}
 									else{
@@ -364,7 +392,7 @@ function validation2(){
 									echo "<li><span class='spec_name'>Classe di Emissione:</span> <strong class='spec_value'>Non Specificato</strong></li>";
 								}
 								?>
-								<li><span class="spec_name">Luogo Veicolo:</span> <strong class="spec_value"><?php echo $row["comune"]; ?></strong> (<?php echo $row["provincia"]; ?>)</li>
+								<li><span class="spec_name">Luogo Veicolo:</span> <strong class="spec_value"><?php echo $row["Indirizzo"]; ?></strong></li>
 							</ul>
 						</div>
 						
@@ -385,11 +413,12 @@ function validation2(){
 							
 							<ul>
 								<?php
-								if ($row["coloresterno"] != ""){
-									echo "<li>Colore Esterno: <strong class='spec_value'>".$row["coloresterno"]."</strong></li>";
+								if ($rowColoreEsterno["descrizione"] != ""){
+									echo "<li>Colore Esterno: <strong class='spec_value'>".$rowColoreEsterno["descrizione"]."</strong></li>";
 								}
 								else {
 									echo "<li>Colore Esterno: <strong class='spec_value'>Non Specificato</strong></li>";
+									
 								}
 								
 								if ($row["Metallizzato"] == 0){
@@ -467,7 +496,7 @@ function validation2(){
 									echo "<li>Consumo Medio: <strong class='spec_value'>Non Specificato</strong></li>";
 								}
 								else {
-									echo "<liConsumo Medio: <strong class='spec_value'>".$row["ConsumoMedio"]."</strong></li>";
+									echo "<li>Consumo Medio: <strong class='spec_value'>".$row["ConsumoMedio"]." (l/100km)</strong></li>";
 								}
 								?>
 							</ul>
