@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<jnlp spec="1.0+" codebase="http://www.auto-nuove-usate.it" href="/j2web/jnlp/j2web_19.jnlp">	<!--!!!-->
+<jnlp spec="1.0+" codebase="http://www.auto-nuove-usate.it/" href="j2web/jnlp/j2web_19.jnlp">	<!--!!!-->
 
     <information>
         <title>J2Web Automotive - 1.0 Beta - Versione di prova per Auto&amp;Auto</title>	<!--!!!-->
@@ -10,12 +10,20 @@
         <description kind="short">
            Software per sincronizzare sui portali web e gestione MLS (Multi Level Sharing) di annunci automotive
         </description>
-        <!--<icon href="/images/j2web/j2webFrameIcon.png"/>-->
+        
+        <!--<icon href="..images/j2webFrameIcon.png"/>-->
+        
         <offline-allowed/>
-		<menu/>
-		<shortcut online="true">
-			<desktop/>
+        
+        <icon href="/j2web/images/j2webFrameIcon.jpg" kind="splash"/>
+ 
+    	<!--<icon href="/j2web/images/j2webFrameIcon.jpg" kind="default"/>-->
+
+		<shortcut online="false">
+		    <desktop/>
+		    <menu submenu="J2Web Automotive"/>
 		</shortcut>
+		
     </information>
 
     <security>
