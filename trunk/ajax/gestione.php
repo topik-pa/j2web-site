@@ -203,7 +203,7 @@ if($_REQUEST["action"] == "tabella2") {
 									<th style='width:18%'>Prezzo</th>
 									<th style='width:24%'>Prezzo Altre Concessionarie</th>
 									<th style='width:18%'>Veicolo Condiviso</th>
-									<th style='width:10%'>Operazioni</th>
+									<th style='width:10%'>Dettaglio</th>
 								</tr>
 							</thead>
 							<tbody>";
@@ -254,7 +254,7 @@ if($_REQUEST["action"] == "tabella2") {
 								  <td>$e &euro;</td>
 								  <td>$b</td>
 								  <td> <a href='dettagli.php?id=".$row['Id']."'> <img src='images/icons/zi.png' style='margin-right:15px; margin-left:0px;'/></a>
-								  <a onclick='elimina(".$row['Id'].")' id='elimina'><img src='images/icons/re.png' /></a></td>
+								  <!--<a onclick='elimina(".$row['Id'].")' id='elimina'><img src='images/icons/re.png' /></a>--></td>
 								</tr>";
 		}
 	}
