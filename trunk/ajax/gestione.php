@@ -169,7 +169,7 @@ if($_REQUEST["action"] == "tabella") {
 								  <td>$d &euro;</td>
 								  <td>$b km</td>
 								  <td><a href='dettagli.php?id=".$row['Id']."'><img src='images/icons/zi.png' style='margin-right:15px; margin-left:0px;'/></a>
-								  <a onclick='elimina(".$row['Id'].")' id='elimina'><img src='images/icons/re.png' /></a></td>
+								  <!--<a onclick='elimina(".$row['Id'].")' id='elimina'><img src='images/icons/re.png' /></a>--></td>
 								</tr>";
 		}
 		else {
@@ -179,7 +179,7 @@ if($_REQUEST["action"] == "tabella") {
 								  <td>$d &euro;</td>
 								  <td>$b km</td>
 								  <td><a href='dettagli.php?id=".$row['Id']."'><img src='images/icons/zi.png' style='margin-right:15px; margin-left:0px;'/></a>
-								  <a onclick='elimina(".$row['Id'].")' id='elimina'><img src='images/icons/re.png' /></a></td>
+								  <!--<a onclick='elimina(".$row['Id'].")' id='elimina'><img src='images/icons/re.png' /></a>--></td>
 								</tr>";
 		}
 	}
@@ -243,7 +243,7 @@ if($_REQUEST["action"] == "tabella2") {
 								  <td>$e &euro;</td>
 								  <td>$b</td>
 								  <td><a href='dettagli.php?id=".$row['Id']."'><img src='images/icons/zi.png' style='margin-right:15px; margin-left:0px;'/></a>
-								 <a onclick='elimina(".$row['Id'].")' id='elimina'><img src='images/icons/re.png' /></a></td>
+								 <!--<a onclick='elimina(".$row['Id'].")' id='elimina'><img src='images/icons/re.png' /></a>--></td>
 								</tr>";
 		}
 		else {
