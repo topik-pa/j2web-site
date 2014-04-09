@@ -164,21 +164,35 @@ function elimina(id)
 				<!--Sezione download del sw j2web-->
 				<?php 
 				if($_SESSION['tipo'] == 2){  //� un concessionario
+							
 				?> 
 				<div id="j2web-download">
 					<div id="getj2web">
-						<h3>Scarica la tua versione di J2Web</h3>
-					
-						<script src="https://www.java.com/js/deployJava.js"></script>
-						<script>
-							// using JavaScript to get location of JNLP
-							// file relative to HTML page
-							var idUtente = <?php echo $row["Id"]; ?>;
-							var dir = location.href.substring(0,
-								location.href.lastIndexOf('/')+1);
-							var url = dir + 'j2web/jnlp/' + 'j2web_' + idUtente + '.jnlp';  //Path del file jnlp
-							deployJava.createWebStartLaunchButton(url, '1.7.0');
-						</script>
+						<h3>Scarica la tua versione di J2Web</h3>					
+						
+						<?php 
+							$url = 'http://' . $_SERVER['SERVER_NAME'] . '/j2web/jnlp/j2web_' . $row["Id"] . '.jnlp';
+							$array = get_headers($url);
+							$string = $array[0];
+							if (!strpos($string,"200")) { ?>
+								<p>Attualmente non è disponibile una versione valida del software</p>
+								<?php
+							}
+							else {?>
+								<script src="https://www.java.com/js/deployJava.js"></script>
+								<script>
+									// using JavaScript to get location of JNLP
+									// file relative to HTML page
+									var idUtente = <?php echo $row["Id"]; ?>;
+									var dir = location.href.substring(0,
+										location.href.lastIndexOf('/')+1);
+									var url = dir + 'j2web/jnlp/' + 'j2web_' + idUtente + '.jnlp';  //Path del file jnlp
+									deployJava.createWebStartLaunchButton(url, '1.7.0');
+								</script>
+								<?php
+							}
+							?>
+						
 					</div>
 					
 					<div id="getjava">
